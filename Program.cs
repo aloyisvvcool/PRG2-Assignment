@@ -1,11 +1,24 @@
 ﻿using PRG2_Grp_project;
 
+
+
 Dictionary<string,Flight> flightDict = new Dictionary<string,Flight>();
 
 //airlineDict is a PLACEHOLDER
 Dictionary<string,Airline> airlineDict = new Dictionary<string,Airline>();
 
-//TASK 1
+//task 1
+//open Airlines.csv file
+string[] airlinesStrings = File.ReadAllLines("airlines.csv");
+foreach (string data in airlinesStrings)
+{
+    string[] splitData = data.Split(",");
+    //Flight is currently null since there is no flight
+    Airline airline = new Airline(splitData[0], splitData[1], new Dictionary<string, Flight>());
+    airlineDict.Add(splitData[0], airline);
+}
+Console.WriteLine($"{airlineDict.Count()} Boarding Gates Loaded!");
+
 //Load BoardingGates
 Console.WriteLine("Loading Boarding Gates...");
 Dictionary<string,BoardingGate> boardingGateDict = new Dictionary<string,BoardingGate>();
@@ -19,6 +32,8 @@ foreach (string data in boardingGateStrings)
 }
 Console.WriteLine($"{boardingGateDict.Count()} Boarding Gates Loaded!");
 
+
+//TASK 2
 
 //Load Flights
 Console.WriteLine("Loading Airlines...");

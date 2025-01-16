@@ -1,0 +1,15 @@
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\bin\Debug\net8.0\PRG2 Grp project.exe
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\bin\Debug\net8.0\PRG2 Grp project.deps.json
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\bin\Debug\net8.0\PRG2 Grp project.runtimeconfig.json
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\bin\Debug\net8.0\PRG2 Grp project.dll
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\bin\Debug\net8.0\PRG2 Grp project.pdb
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.AssemblyInfoInputs.cache
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.AssemblyInfo.cs
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.csproj.CoreCompileInputs.cache
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.sourcelink.json
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.dll
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\refint\PRG2 Grp project.dll
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.pdb
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.genruntimeconfig.cache
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\obj\Debug\net8.0\ref\PRG2 Grp project.dll
