@@ -1,4 +1,5 @@
-﻿using PRG2_Grp_project;
+﻿using System.Buffers.Text;
+using PRG2_Grp_project;
 
 
 
@@ -9,26 +10,28 @@ Dictionary<string,Airline> airlineDict = new Dictionary<string,Airline>();
 
 //task 1
 //open Airlines.csv file
-string[] airlinesStrings = File.ReadAllLines("airlines.csv");
+Console.WriteLine("Loading Airlines...");
+string[] airlinesStrings = File.ReadAllLines("airlines.csv"); //load the airlines.csv file
 foreach (string data in airlinesStrings.Skip(1))
 {
     string[] splitData = data.Split(",");
     //Flight is currently null since there is no flight
-    Airline airline = new Airline(splitData[0], splitData[1], new Dictionary<string, Flight>());
-    airlineDict.Add(splitData[0], airline);
+    Airline airline = new Airline(splitData[0], splitData[1], new Dictionary<string, Flight>()); //create the Airline objects based on the data loaded
+    airlineDict.Add(splitData[0], airline); //add the Airlines objects into an Airline Dictionary
+
 }
-Console.WriteLine($"{airlineDict.Count()} Boarding Gates Loaded!");
+Console.WriteLine($"{airlineDict.Count()} Airlines Loaded!");
 
 //Load BoardingGates
 Console.WriteLine("Loading Boarding Gates...");
-Dictionary<string,BoardingGate> boardingGateDict = new Dictionary<string,BoardingGate>();
+Dictionary<string,BoardingGate> boardingGateDict = new Dictionary<string,BoardingGate>(); //load the boardinggates.csv file
 string[] boardingGateStrings = File.ReadAllLines("boardinggates.csv");
 foreach (string data in boardingGateStrings.Skip(1))
 {
     string[] splitData = data.Split(",");
     //Flight is currently null since there is no flight
-    BoardingGate boardingGate = new BoardingGate(splitData[0], Convert.ToBoolean(splitData[1]), Convert.ToBoolean(splitData[2]), Convert.ToBoolean(splitData[3]), null);
-    boardingGateDict.Add(splitData[0], boardingGate);
+    BoardingGate boardingGate = new BoardingGate(splitData[0], Convert.ToBoolean(splitData[1]), Convert.ToBoolean(splitData[2]), Convert.ToBoolean(splitData[3]), null); //create the Boarding Gate objects based on the data loaded
+    boardingGateDict.Add(splitData[0], boardingGate); //add the Boarding Gate objects into a Boarding Gate dictionary
 }
 Console.WriteLine($"{boardingGateDict.Count()} Boarding Gates Loaded!");
 
@@ -72,6 +75,7 @@ Console.WriteLine($"{flightDict.Count()} Airlines Loaded!");
 
 //TASK 3
 //Header
+
 Console.WriteLine($"{"Flight Number",-15}{"Airline Name",-25}{"Origin",-25}{"Destination",-25}{"Expected Departure/Arrival Time",-30}");
 
 foreach (Flight flight in flightDict.Values)
@@ -90,7 +94,13 @@ foreach (Flight flight in flightDict.Values)
     //day/month/year hour:minute:seconds am/pm
 }
 
-
+//task 4
+Console.WriteLine("=============================================\nList of Boarding Gates for Changi Airport Terminal 5\n=============================================");
+Console.WriteLine("Gate Name\tDDJB\t\tCFFT\t\tLWTT");
+foreach (BoardingGate bg in boardingGateDict.Values)
+{
+    Console.WriteLine($"{bg.GateName}\t\t{bg.SupportsDDJB}\t\t{bg.SupportsCFFT}\t\t{bg.SupportsLWTT}");
+}
 
 //TASK 5
 Console.WriteLine("=============================================\r\nAssign a Boarding Gate to a Flight\r\n=============================================\r\n");
@@ -259,6 +269,168 @@ void CreateNewFlight()
 //Call method
 CreateNewFlight();
 
+//task 7
+Console.WriteLine("=============================================\nList of Airlines for Changi Airport Terminal 5\n=============================================");
+Console.WriteLine("Airline Code\tAirline Name");
+foreach (Airline al in airlineDict.Values) //list all the Airlines available
+{
+    Console.WriteLine($"{al.Code}\t\t{al.Name}");
+}
+
+Console.Write("Enter Airline Code: "); //prompt the user to enter the 2-Letter Airline Code (e.g. SQ or MH, etc.)
+string searchCode = Console.ReadLine();
+Console.Write($"=============================================\nList of Flights for "); //prompt the user to enter the 2-Letter Airline Code (e.g. SQ or MH, etc.)
+Airline searchAirline = null;
+foreach (Airline al in airlineDict.Values)
+    if (al.Code == searchCode) { 
+        searchAirline = al; //retrieve the Airline object selected
+        Console.Write(searchAirline.Name);
+}
+Console.Write("\n=============================================");
+Console.WriteLine("\nFlight Number\tAirline Name\t\tOrigin\t\t\tDestination\t\tExpectedDeparture/Arrival Time");
+foreach (Flight f in flightDict.Values) //for each Flight from that Airline, show their Airline Number, Origin and Destination
+{
+    if (f != null)
+    {
+        if (new string(f.FlightNumber.Take(2).ToArray()) == searchCode)
+        {
+            Console.WriteLine($"{f.FlightNumber}\t\t{searchAirline.Name}\t{f.Origin}\t\t{f.Destination}\t\t{f.ExpectedTime}");
+        }
+    }
+}
+
+Console.Write("Select a Flight Number: "); //prompt the user to select a Flight Number
+string searchFlightNum = Console.ReadLine();
+Flight searchFlight;
+foreach (Flight f in flightDict.Values)
+{
+    if (f != null)
+    {
+        if (f.FlightNumber == searchFlightNum)
+        {
+            searchFlight = f; //retrieve the Flight object selected
+            Console.WriteLine($"Flight Number:\t\t\t\t{f.FlightNumber}"); //display the following Flight details, which are all the flight specifications
+            Console.WriteLine($"Airline Name:\t\t\t\t{searchAirline}");
+            Console.WriteLine($"Origin:\t\t\t\t\t{f.Origin}");
+            Console.WriteLine($"Destination:\t\t\t\t{f.Destination}");
+            Console.WriteLine($"Expected Departure/Arrival Time:\t{f.ExpectedTime}");
+        }
+    }
+}
+
+
+//task 8
+
+Console.WriteLine("=============================================\nList of Airlines for Changi Airport Terminal 5\n=============================================");
+Console.WriteLine("Airline Code\tAirline Name");
+foreach (Airline al in airlineDict.Values) //list all the Airlines available
+{
+    Console.WriteLine($"{al.Code}\t\t{al.Name}");
+}
+
+Console.Write("Enter Airline Code: "); //prompt the user to enter the 2-Letter Airline Code (e.g. SQ or MH, etc.)
+string searchCode1 = Console.ReadLine();
+Console.Write($"=============================================\nList of Flights for "); //prompt the user to enter the 2-Letter Airline Code (e.g. SQ or MH, etc.)
+Airline searchAirline1 = null;
+foreach (Airline al in airlineDict.Values)
+    if (al.Code == searchCode1)
+    {
+        searchAirline1 = al; //retrieve the Airline object selected
+        Console.Write(searchAirline1.Name);
+    }
+Console.Write("\n=============================================");
+Console.WriteLine("\nFlight Number\tAirline Name\t\tOrigin\t\t\tDestination\t\tExpectedDeparture/Arrival Time");
+foreach (Flight f in flightDict.Values) //for each Flight from that Airline, show their Airline Number, Origin and Destination
+{
+    if (f != null)
+    {
+        if (new string(f.FlightNumber.Take(2).ToArray()) == searchCode1)
+        {
+            Console.WriteLine($"{f.FlightNumber}\t\t{searchAirline1.Name}\t{f.Origin}\t\t{f.Destination}\t\t{f.ExpectedTime}");
+        }
+    }
+}
+
+
+Console.WriteLine("Choose an existing Flight to modify or delete: ");//prompt the user to select a Flight Number
+string searchFlightNum1 = Console.ReadLine();
+Flight searchFlight1 = null;
+foreach (Flight f in flightDict.Values)
+{
+    if (f != null)
+    {
+        if (f.FlightNumber == searchFlightNum1)
+        {
+            searchFlight1 = f; //retrieve the Flight object selected
+            break;
+        }
+    }
+}
+Console.Write("1. Modify Flight\n2. Delete Flight");
+string choice = Console.ReadLine();
+if (choice == "1")
+{
+    Console.Write("1. Modify Basic Information\r\n2. Modify Status\r\n3. Modify Special Request Code\r\n4. Modify Boarding Gate");
+    string actionChoice = Console.ReadLine();
+    if (actionChoice == "1")
+    {
+        Console.Write("\nEnter new Origin: ");
+        string newOrigin = Console.ReadLine();
+        searchFlight1.Origin = newOrigin;
+
+        Console.Write("\nEnter new Destination: ");
+        string newDestination = Console.ReadLine();
+        searchFlight1.Destination = newDestination;
+
+        Console.Write("\nEnter new Expected Departure/Arrival Time (dd/mm/yyyy hh:mm): ");
+        string newETA = Console.ReadLine();
+        searchFlight1.ExpectedTime = Convert.ToDateTime(newETA);
+
+        flightDict[searchFlight1.FlightNumber] = searchFlight1;
+        Console.WriteLine("Flight Updated!");
+
+    }
+    else if (choice == "2")
+    {
+        Console.Write("\nEnter new Status: ");
+        string newStatus = Console.ReadLine();
+        searchFlight1.Status = newStatus;
+
+        flightDict[searchFlight1.FlightNumber] = searchFlight1;
+        Console.WriteLine("Flight Updated!");
+    }
+    else if (choice == "3")
+    {
+        // add if have
+    }
+    else if (choice == "4") {
+        //add if have
+    }
+
+    Console.WriteLine($"Flight Number: {searchFlight1.FlightNumber}");
+    Console.WriteLine($"Airline Name: {searchAirline1}");
+    Console.WriteLine($"Origin: {searchFlight1.Origin}");
+    Console.WriteLine($"Destiantion: {searchFlight1.Destination}");
+    Console.WriteLine($"Expected Departure/Arrival Time: {searchFlight1.ExpectedTime}");
+    Console.WriteLine($"Status: {searchFlight1.Status}");
+}
+else if (choice == "0")
+{
+    Console.Write("Confirm Deletion? [Y/N]");
+    string deleteChoice = Console.ReadLine();
+    if (deleteChoice == "Y")
+    {
+        foreach (var kvp in flightDict)
+        {
+            if (kvp.Value == searchFlight1)
+            {
+                flightDict.Remove(kvp.Key);
+            }
+        }
+    }
+
+
+}
 
 
 //TASK 9
@@ -307,5 +479,3 @@ foreach(Flight flight in flightList)
         Console.WriteLine($"{flight.FlightNumber,-15} {airlineDict[flight.FlightNumber.Substring(0, 2)].Name,-20} {flight.Origin,-20} {flight.Destination,-20} {flight.ExpectedTime,-35} {flight.Status,-15} {boardingGateName,-15}");
     }
 }
-
-

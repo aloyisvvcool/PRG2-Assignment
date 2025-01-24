@@ -28,3 +28,6 @@ C:\Users\naive\OneDrive - Ngee Ann Polytechnic\Desktop\nigs\PRG2-Assignment\obj\
 C:\Users\naive\OneDrive - Ngee Ann Polytechnic\Desktop\nigs\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.pdb
 C:\Users\naive\OneDrive - Ngee Ann Polytechnic\Desktop\nigs\PRG2-Assignment\obj\Debug\net8.0\PRG2 Grp project.genruntimeconfig.cache
 C:\Users\naive\OneDrive - Ngee Ann Polytechnic\Desktop\nigs\PRG2-Assignment\obj\Debug\net8.0\ref\PRG2 Grp project.dll
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\bin\Debug\net8.0\airlines.csv
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\bin\Debug\net8.0\boardinggates.csv
+C:\Users\aloys\OneDrive\Documents\GitHub\PRG2-Assignment\bin\Debug\net8.0\flights.csv
