@@ -10,7 +10,7 @@ Dictionary<string,Airline> airlineDict = new Dictionary<string,Airline>();
 //task 1
 //open Airlines.csv file
 string[] airlinesStrings = File.ReadAllLines("airlines.csv");
-foreach (string data in airlinesStrings)
+foreach (string data in airlinesStrings.Skip(1))
 {
     string[] splitData = data.Split(",");
     //Flight is currently null since there is no flight
@@ -23,7 +23,7 @@ Console.WriteLine($"{airlineDict.Count()} Boarding Gates Loaded!");
 Console.WriteLine("Loading Boarding Gates...");
 Dictionary<string,BoardingGate> boardingGateDict = new Dictionary<string,BoardingGate>();
 string[] boardingGateStrings = File.ReadAllLines("boardinggates.csv");
-foreach (string data in boardingGateStrings)
+foreach (string data in boardingGateStrings.Skip(1))
 {
     string[] splitData = data.Split(",");
     //Flight is currently null since there is no flight
@@ -38,7 +38,7 @@ Console.WriteLine($"{boardingGateDict.Count()} Boarding Gates Loaded!");
 //Load Flights
 Console.WriteLine("Loading Airlines...");
 string[] flightStrings = File.ReadAllLines("flights.csv");
-foreach (string data in flightStrings)
+foreach (string data in flightStrings.Skip(1))
 {
     string[] splitData = data.Split(",");
     //Initalise Flight object
