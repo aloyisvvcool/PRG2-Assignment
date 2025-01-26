@@ -4,6 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//==========================================================
+// Student Number : S10266029
+// Student Name : Aloysius Luke Tay Shi Yuan
+// Partner Name : Samuel Ng En Yi
+//==========================================================
+
+
+
+
 namespace PRG2_Grp_project
 {
     class Terminal
@@ -87,7 +97,11 @@ namespace PRG2_Grp_project
 
 		public void PrintAirlineFees()
 		{
-			//What am I even supposed to do
+			Console.WriteLine("Airline Fees:");
+			foreach (Airline airline in Airlines.Values)
+			{
+				Console.WriteLine($"{airline.Name}: {airline.CalculateFees() + (airline.Flights.Values.Count * 300)}"); //airline.Flights.Values.Count * 300 to account for boarding gate fees
+            }
 		}
 
         public override string ToString()

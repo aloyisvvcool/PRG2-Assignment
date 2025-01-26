@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//==========================================================
+// Student Number : S10266029
+// Student Name : Aloysius Luke Tay Shi Yuan
+// Partner Name : Samuel Ng En Yi
+//==========================================================
+
 namespace PRG2_Grp_project
 {
     class Flight:IComparable<Flight>
@@ -65,7 +72,13 @@ namespace PRG2_Grp_project
 		//Methods
 		public virtual double CalculateFees()
 		{
-			return 0;
+			if (Origin == "Singapore (SIN)") {
+				return 800;
+			}
+			else
+			{
+				return 500;
+			}
 		}
 
 		//Icomparable
@@ -93,8 +106,15 @@ namespace PRG2_Grp_project
 
 		public override double CalculateFees()
 		{
-			return 1.0;
-		}
+            if (Origin == "Singapore (SIN)")
+            {
+                return 800;
+            }
+            else
+            {
+                return 500;
+            }
+        }
 
         public override string ToString()
         {
@@ -124,7 +144,14 @@ namespace PRG2_Grp_project
 
         public override double CalculateFees()
         {
-            return 1.0;
+            if (Origin == "Singapore (SIN)")
+            {
+                return 800 + 500;
+            }
+            else
+            {
+                return 500 + 500;
+            }
         }
 
     }
@@ -146,7 +173,14 @@ namespace PRG2_Grp_project
 
         public override double CalculateFees()
         {
-            return 1.0;
+            if (Origin == "Singapore (SIN)")
+            {
+                return 800 + 300;
+            }
+            else
+            {
+                return 500 + 300;
+            }
         }
 
         public override string ToString()
@@ -172,7 +206,14 @@ namespace PRG2_Grp_project
 
         public override double CalculateFees()
         {
-            return 1.0;
+            if (Origin == "Singapore (SIN)")
+            {
+                return 800 + 150;
+            }
+            else
+            {
+                return 500 + 150;
+            }
         }
 
         public override string ToString()

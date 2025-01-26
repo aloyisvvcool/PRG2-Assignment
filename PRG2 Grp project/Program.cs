@@ -1,6 +1,14 @@
 ﻿using PRG2_Grp_project;
 using System.Globalization;
 
+
+
+//==========================================================
+// Student Number : S10266029
+// Student Name : Aloysius Luke Tay Shi Yuan
+// Partner Name : Samuel Ng En Yi
+//==========================================================
+
 Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
 Dictionary<string, Airline> airlineDict = new Dictionary<string, Airline>();
 
@@ -28,7 +36,7 @@ foreach (string data in boardingGateStrings.Skip(1))
 }
 Console.WriteLine($"{boardingGateDict.Count()} Boarding Gates Loaded!");
 
-
+/*
 //TASK 2
 //Load Flights
 Console.WriteLine("Loading Airlines...");
@@ -565,3 +573,4 @@ while (true)
 
 
 }
+*/
