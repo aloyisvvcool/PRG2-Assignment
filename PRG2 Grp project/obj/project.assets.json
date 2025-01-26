@@ -8,24 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\aloys\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\naive\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
+      "projectUniqueName": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
       "projectName": "PRG2 Grp project",
-      "projectPath": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
-      "packagesPath": "C:\\Users\\aloys\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\obj\\",
+      "projectPath": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
+      "packagesPath": "C:\\Users\\naive\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\aloys\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\naive\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -50,8 +45,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -72,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -72,53 +72,55 @@ namespace PRG2_Grp_project
 			return false;
 		}
 
-		public double CalculateFees()
-		{
-			//Initialise Fee
-			double fees = 0;
-			//Calculate Fee before discounts.
-			foreach (Flight f in flights.Values)
-			{
-				fees += f.CalculateFees();
-			}
+        public double CalculateFees()
+        {
+            //Initialise Fee
+            double fees = 0;
+            //Calculate Fee before discounts.
+            foreach (Flight f in flights.Values)
+            {
+                fees += f.CalculateFees();
+            }
 
-			//Discount for multiple flights
-			if (flights.Count() > 5 )
-			{
-				fees = fees * 0.97 - 350;
-			}
-			else if (flights.Count() >= 3 )
-			{
-				fees -= 350;
-			}
+            int threeFlightDiscountNumber = (Flights.Count / 3);
 
-			//initalise 9pm and 11am
+            //Discount for multiple flights
+            if (flights.Count() > 5)
+            {
+                fees = fees * 0.97;
+            }
+
+            //Three Flight discount stackable
+            fees -= 350 * threeFlightDiscountNumber;
+
+            //initalise 9pm and 11am
             DateTime startTime = DateTime.Today.AddHours(21); // 9:00 PM 
-			DateTime endTime = DateTime.Today.AddHours(11); // 11:00 AM  
+            DateTime endTime = DateTime.Today.AddHours(11); // 11:00 AM  
 
             foreach (Flight f in flights.Values)
-			{
-				//Time discounts
-				if (f.ExpectedTime > startTime || f.ExpectedTime < endTime)
-				{
-					fees -= 110;
-				}
+            {
+                //Time discounts
+                if (f.ExpectedTime > startTime || f.ExpectedTime < endTime)
+                {
+                    fees -= 110;
+                }
 
-				//Flight Origin discounts
-				if (f.Origin == "Dubai (DXB)" || f.Origin == "Bangkok (BKK)" || f.Origin == "Tokyo (NRT)")
-				{
-					fees -= 25;
-				}
-				//No Special Request Code discounts
-				if (f.Status == null)
-				{
-					fees -= 50;
-				}
-			}
+                //Flight Origin discounts
+                if (f.Origin == "Dubai (DXB)" || f.Origin == "Bangkok (BKK)" || f.Origin == "Tokyo (NRT)")
+                {
+                    fees -= 25;
+                }
+                //No Special Request Code discounts
+                if (f is NORMFlight)
+                {
+                    fees -= 50;
+                }
+            }
 
 
-			return fees;
-		}
+            return fees;
+        }
+
 
 
         public override string ToString()
