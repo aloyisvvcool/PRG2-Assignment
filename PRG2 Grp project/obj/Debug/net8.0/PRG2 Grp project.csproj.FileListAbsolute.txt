@@ -1,0 +1,14 @@
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\bin\Debug\net8.0\PRG2 Grp project.exe
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\bin\Debug\net8.0\PRG2 Grp project.deps.json
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\bin\Debug\net8.0\PRG2 Grp project.runtimeconfig.json
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\bin\Debug\net8.0\PRG2 Grp project.dll
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\bin\Debug\net8.0\PRG2 Grp project.pdb
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\PRG2 Grp project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\PRG2 Grp project.AssemblyInfoInputs.cache
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\PRG2 Grp project.AssemblyInfo.cs
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\PRG2 Grp project.csproj.CoreCompileInputs.cache
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\PRG2 Grp project.dll
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\refint\PRG2 Grp project.dll
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\PRG2 Grp project.pdb
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\PRG2 Grp project.genruntimeconfig.cache
+C:\Semester 2\PRG 2\FINAL PROJECT\PRG2 Grp project\PRG2 Grp project\obj\Debug\net8.0\ref\PRG2 Grp project.dll
