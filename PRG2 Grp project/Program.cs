@@ -14,6 +14,7 @@ Dictionary<string, Airline> airlineDict = new Dictionary<string, Airline>();
 
 //task 1
 //open Airlines.csv file
+Console.WriteLine("Loading Airlines");
 string[] airlinesStrings = File.ReadAllLines("airlines.csv");
 foreach (string data in airlinesStrings.Skip(1))
 {
@@ -22,6 +23,7 @@ foreach (string data in airlinesStrings.Skip(1))
     Airline airline = new Airline(splitData[0], splitData[1], new Dictionary<string, Flight>());
     airlineDict.Add(splitData[0], airline);
 }
+Console.WriteLine($"{airlineDict.Count()} Airlines Loaded!");
 
 //Load BoardingGates
 Console.WriteLine("Loading Boarding Gates...");
@@ -36,10 +38,10 @@ foreach (string data in boardingGateStrings.Skip(1))
 }
 Console.WriteLine($"{boardingGateDict.Count()} Boarding Gates Loaded!");
 
-/*
+
 //TASK 2
 //Load Flights
-Console.WriteLine("Loading Airlines...");
+Console.WriteLine("Loading Flights...");
 string[] flightStrings = File.ReadAllLines("flights.csv");
 foreach (string data in flightStrings.Skip(1))
 {
@@ -70,7 +72,7 @@ foreach (string data in flightStrings.Skip(1))
 }
 Console.WriteLine($"{flightDict.Count()} Flights Loaded!");
 
-
+/*
 //DO NOT REMOVE, VARIABLE USED FOR TASK 3,9 AND ADVANCED
 Dictionary<string, string> airlineKeyValuePairs = new Dictionary<string, string>();
 foreach (string data in airlinesStrings)
