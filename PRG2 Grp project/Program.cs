@@ -4,9 +4,9 @@ using System.Globalization;
 
 
 //==========================================================
-// Student Number : S10266029
-// Student Name : Aloysius Luke Tay Shi Yuan
-// Partner Name : Samuel Ng En Yi
+// Student Number : S10267956
+// Student Name : Samuel Ng En Yi
+// Partner Name : Aloysius Luke Tay Shi Yuan
 //==========================================================
 
 Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
@@ -33,7 +33,7 @@ foreach (string data in boardingGateStrings.Skip(1))
 {
     string[] splitData = data.Split(",");
     //Flight is currently null since there is no flight
-    BoardingGate boardingGate = new BoardingGate(splitData[0], Convert.ToBoolean(splitData[1]), Convert.ToBoolean(splitData[2]), Convert.ToBoolean(splitData[3]), null);
+    BoardingGate boardingGate = new BoardingGate(splitData[0], Convert.ToBoolean(splitData[2]), Convert.ToBoolean(splitData[1]), Convert.ToBoolean(splitData[3]), null);
     boardingGateDict.Add(splitData[0], boardingGate);
 }
 Console.WriteLine($"{boardingGateDict.Count()} Boarding Gates Loaded!");
@@ -72,7 +72,7 @@ foreach (string data in flightStrings.Skip(1))
 }
 Console.WriteLine($"{flightDict.Count()} Flights Loaded!");
 
-/*
+
 //DO NOT REMOVE, VARIABLE USED FOR TASK 3,9 AND ADVANCED
 Dictionary<string, string> airlineKeyValuePairs = new Dictionary<string, string>();
 foreach (string data in airlinesStrings)
@@ -95,7 +95,6 @@ void TaskThree()
     }
     Console.WriteLine();
 }
-
 
 
 
@@ -272,15 +271,27 @@ void TaskSix()
             Console.Write("Enter Destination: ");
             string destination = Console.ReadLine();
             Console.Write("Enter Expected Departure/Arrival Time (dd/mm/yyyy hh:mm): ");
-            DateTime expectedDepartureOrArrivalTime = DateTime.ParseExact(Console.ReadLine(), "d/M/yyyy H:mm", null);
+
+            //Initialise DateTime Object, DateTime.Now will not be used as actualy date
+            DateTime expectedDepartureOrArrivalTime = DateTime.Now;
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Enter expected departure/arrival time (d/M/yyyy H:mm): ");
+                    string inputDateTime = Console.ReadLine();
+                    expectedDepartureOrArrivalTime = DateTime.ParseExact(inputDateTime, "d/M/yyyy H:mm", null);
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid date format. Please enter the date in 'd/M/yyyy H:mm' format.");
+                }
+            }
+
+
             Console.Write("Enter Special Request Code (CFFT/DDJB/LWTT/None): ");
             string specialRequestCode = Console.ReadLine();
-
-            //Console.Write("New Flight details(comma separated): ");
-            //string newFlightDetails = Console.ReadLine();
-            //string[] splitNewFlightDetails = newFlightDetails.Split(",");
-            //Console.Write("Additional information: ");
-            //string extraNewFlightDetails = Console.ReadLine();
 
             //Bool for valid info
             Flight newFlight = null;
@@ -314,8 +325,9 @@ void TaskSix()
                 using (StreamWriter writer = new StreamWriter("flights.csv", append: true))
                 {
                     writer.WriteLine($"{newFlight.FlightNumber},{newFlight.Origin},{newFlight.Destination},{newFlight.ExpectedTime},{specialRequestCode}");
-                    break;
                 }
+                Console.WriteLine($"Flight {flightNumber} has been added!");
+                break;
 
             }
             else
@@ -339,7 +351,6 @@ void TaskSix()
         }
         else if (addAnotherFlightOption == "N")
         {
-            Console.WriteLine("Flight(s) have been successfully added");
             break;
         }
         else
@@ -368,7 +379,7 @@ void TaskNine()
     {
         for (int j = 0; j < flightList.Count; j++)
         {
-            if (flightList[i].CompareTo(flightList[j]) == 1)
+            if (flightList[i].CompareTo(flightList[j]) == -1)
             {
                 Flight placeholder = flightList[j];
                 flightList[j] = flightList[i];
@@ -575,4 +586,3 @@ while (true)
 
 
 }
-*/

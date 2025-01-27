@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 
 //==========================================================
-// Student Number : S10266029
-// Student Name : Aloysius Luke Tay Shi Yuan
-// Partner Name : Samuel Ng En Yi
+// Student Number : S10267956
+// Student Name : Samuel Ng En Yi
+// Partner Name : Aloysius Luke Tay Shi Yuan
 //==========================================================
 
 namespace PRG2_Grp_project
