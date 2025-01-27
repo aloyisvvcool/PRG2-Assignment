@@ -73,13 +73,34 @@ foreach (string data in flightStrings.Skip(1))
 Console.WriteLine($"{flightDict.Count()} Flights Loaded!");
 
 
-//DO NOT REMOVE, VARIABLE USED FOR TASK 3,9 AND ADVANCED
+//DO NOT REMOVE, GLOBAL VARIABLE USED FOR TASK 3,9 AND ADVANCED
 Dictionary<string, string> airlineKeyValuePairs = new Dictionary<string, string>();
 foreach (string data in airlinesStrings)
 {
     string[] splitData = data.Split(",");
     airlineKeyValuePairs.Add(splitData[1], splitData[0]);
 }
+
+//GLOBAL VARIABLE USED FOR TASK 5,9
+Dictionary<string, string> specialCodeDict = new Dictionary<string, string>();
+//Dictionary to map code to special request
+for (int i = 1; i < flightStrings.Count(); i++) //Skip header
+{
+    Console.WriteLine(flightStrings[i]);
+    string code = "";
+    try
+    {
+        code = flightStrings[i].Split(",")[4];
+    }
+    catch
+    {
+        //Keeps code as "" for Normal Flights
+    }
+
+    specialCodeDict.Add(flightStrings[i].Split(",")[0], code);
+}
+//END OF GLOBAL VARIABLES
+
 
 
 //TASK 3 (Complete)
@@ -124,13 +145,34 @@ void TaskFive()
     {
         //Initalise boardingGateNumber
         string boardingGateNumber = "";
+        bool matchingSpecialCode = false;
         while (true)
         {
             Console.Write("Enter Boarding Gate Name:\n");
             boardingGateNumber = Console.ReadLine();
             if (boardingGateDict.ContainsKey(boardingGateNumber))
             {
-                break;
+                if (specialCodeDict[selectedFlight.FlightNumber] == "DJJB" && boardingGateDict[boardingGateNumber].SupportsDDJB == true)
+                {
+                    break;
+                }
+                else if (specialCodeDict[selectedFlight.FlightNumber] == "CFFT" && boardingGateDict[boardingGateNumber].SupportsCFFT == true)
+                {
+                    break;
+                }
+                else if (specialCodeDict[selectedFlight.FlightNumber] == "LWTT" && boardingGateDict[boardingGateNumber].SupportsLWTT == true)
+                {
+                    break;
+                }
+                else if (specialCodeDict[selectedFlight.FlightNumber] == "")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Boarding Gate does not support Flight Special Request Code");
+                }
+
             }
             else
             {
@@ -428,12 +470,15 @@ void AdvancedTaskA()
     //Make a copy of flightDict as a List for sorting
     List<Flight> flightList = new List<Flight>(flightDict.Values);
 
-    //Create list of flightCodes wiht boarding gates
+    //Create list of flightCodes with boarding gates
+    //Initialise number of Flights already assigned Boarding Gates
+    int numOfFlightsWithBoardingGate = 0;
     foreach (BoardingGate boardingGate in boardingGateDict.Values)
     {
         if (boardingGate.Flight != null)
         {
             flightsWithBoardingGateCode.Add(boardingGate.Flight.FlightNumber);
+            numOfFlightsWithBoardingGate += 1;
         }
         else
         {
@@ -450,27 +495,12 @@ void AdvancedTaskA()
     }
 
     Console.WriteLine($"Total number of Flights without Boarding Gate: {flightWithoutBoardingGateQueue.Count()}");
-    Console.WriteLine($"Total Number of unassigned Boarding Gates: {freeBoardingGates.Count()}");
+    Console.WriteLine($"Total number of unassigned Boarding Gates: {freeBoardingGates.Count()}");
 
-    Dictionary<string, string> specialCodeDict = new Dictionary<string, string>();
-    //Dictionary to map code to special request
-    for (int i = 1; i < flightStrings.Count(); i++) //Skip header
-    {
-        Console.WriteLine(flightStrings[i]);
-        string code = "";
-        try
-        {
-            code = flightStrings[i].Split(",")[4];
-        }
-        catch
-        {
-        }
-
-        specialCodeDict.Add(flightStrings[i].Split(",")[0], code);
-    }
-
-
-    for (int i = 1; i < flightWithoutBoardingGateQueue.Count + 1; i++)
+    //Checking if flight has special request code, match and assign to gate, then print Flight details.
+    //Initialise Number of processed Flights and Boarding Gate
+    int processedNumber = 0;
+    while (flightWithoutBoardingGateQueue.Count > 0)
     {
         Flight flight = flightWithoutBoardingGateQueue.Dequeue();
         if (specialCodeDict[flight.FlightNumber] == "CFFT")
@@ -482,6 +512,7 @@ void AdvancedTaskA()
                     boardingGateDict[boardingGate.GateName].Flight = flight;
                     freeBoardingGates.Remove(boardingGate);
                     Console.WriteLine($"{flight.FlightNumber,-15} {airlineKeyValuePairs[flight.FlightNumber.Substring(0, 2)],-20} {flight.Origin,-20} {flight.Destination,-20} {flight.ExpectedTime,-35} {"CFFT",-15} {boardingGate.GateName,-15}");
+                    processedNumber++;
                     break;
                 }
             }
@@ -496,6 +527,7 @@ void AdvancedTaskA()
                     boardingGateDict[boardingGate.GateName].Flight = flight;
                     freeBoardingGates.Remove(boardingGate);
                     Console.WriteLine($"{flight.FlightNumber,-15} {airlineKeyValuePairs[flight.FlightNumber.Substring(0, 2)],-20} {flight.Origin,-20} {flight.Destination,-20} {flight.ExpectedTime,-35} {"DDJB",-15} {boardingGate.GateName,-15}");
+                    processedNumber++;
                     break;
                 }
             }
@@ -510,6 +542,7 @@ void AdvancedTaskA()
                     boardingGateDict[boardingGate.GateName].Flight = flight;
                     freeBoardingGates.Remove(boardingGate);
                     Console.WriteLine($"{flight.FlightNumber,-15} {airlineKeyValuePairs[flight.FlightNumber.Substring(0, 2)],-20} {flight.Origin,-20} {flight.Destination,-20} {flight.ExpectedTime,-35} {"LWTT",-15} {boardingGate.GateName,-15}");
+                    processedNumber++;
                     break;
                 }
             }
@@ -524,13 +557,39 @@ void AdvancedTaskA()
                     boardingGateDict[boardingGate.GateName].Flight = flight;
                     freeBoardingGates.Remove(boardingGate);
                     Console.WriteLine($"{flight.FlightNumber,-15} {airlineKeyValuePairs[flight.FlightNumber.Substring(0, 2)],-20} {flight.Origin,-20} {flight.Destination,-20} {flight.ExpectedTime,-35} {"No",-15} {boardingGate.GateName,-15}");
+                    processedNumber++;
                     break;
                 }
             }
         }
 
     }
+
+
+    Console.WriteLine($"Total number of Flights and Boarding Gates processed and assigned: {processedNumber}");
+    Console.WriteLine($"Total number of Flights and Boarding Gates that were processed automatically over those that were already assigned: {(processedNumber/numOfFlightsWithBoardingGate * 100.00):F2}% ");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -543,7 +602,7 @@ while (true)
     Console.WriteLine();
     Console.WriteLine();
     Console.WriteLine();
-    Console.WriteLine("=============================================\r\nWelcome to Changi Airport Terminal 5\r\n=============================================\r\n1. List All Flights\r\n2. List Boarding Gates\r\n3. Assign a Boarding Gate to a Flight\r\n4. Create Flight\r\n5. Display Airline Flights\r\n6. Modify Flight Details\r\n7. Display Flight Schedule\r\n0. Exit");
+    Console.WriteLine("=============================================\r\nWelcome to Changi Airport Terminal 5\r\n=============================================\r\n1. List All Flights\r\n2. List Boarding Gates\r\n3. Assign a Boarding Gate to a Flight\r\n4. Create Flight\r\n5. Display Airline Flights\r\n6. Modify Flight Details\r\n7. Display Flight Schedule\r\n8. Process all unassigned flights to boarding gates in bulk\r\n0. Exit");
     Console.WriteLine();
     Console.Write("Please select your option:\n");
     string option = Console.ReadLine();
@@ -574,6 +633,10 @@ while (true)
     else if (option == "7")
     {
         TaskNine();
+    }
+    else if (option == "8")
+    {
+        AdvancedTaskA();
     }
     else if (option == "0")
     {
