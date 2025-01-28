@@ -52,15 +52,15 @@ foreach (string data in flightStrings.Skip(1))
 {
     if (splitData[4] == "LWTT")
     {
-        flight = new LWTTFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 500);
+        flight = new LWTTFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null);
     }
     else if (splitData[4] == "DDJB")
     {
-        flight = new DDJBFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 300);
+        flight = new DDJBFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null);
     }
     else if (splitData[4] == "CFFT")
     {
-        flight = new CFFTFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 150);
+        flight = new CFFTFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null);
     }
     else 
     {
@@ -347,14 +347,14 @@ void TaskSix()
                 }
                 else if (specialRequestCode == "LWTT")
                 {
-                    newFlight = new LWTTFlight(flightNumber, origin, destination, expectedDepartureOrArrivalTime, null, 500);
+                    newFlight = new LWTTFlight(flightNumber, origin, destination, expectedDepartureOrArrivalTime, null);
                 }
                 else if (specialRequestCode == "DDJB")
                 {
-                    newFlight = new DDJBFlight(flightNumber, origin, destination, expectedDepartureOrArrivalTime, null, 300);
+                    newFlight = new DDJBFlight(flightNumber, origin, destination, expectedDepartureOrArrivalTime, null);
                 }
                 else if (specialRequestCode == "CFFT")
-                    newFlight = new CFFTFlight(flightNumber, origin, destination, expectedDepartureOrArrivalTime, null, 150);
+                    newFlight = new CFFTFlight(flightNumber, origin, destination, expectedDepartureOrArrivalTime, null);
                 else { validInfo = false; }
             }
 
@@ -570,9 +570,43 @@ void AdvancedTaskA()
     Console.WriteLine($"Total number of Flights and Boarding Gates that were processed automatically over those that were already assigned: {(processedNumber/numOfFlightsWithBoardingGate * 100.00):F2}% ");
 }
 
+//ADVANCED (b)
 
+foreach (Flight flight in flightDict.Values) //SUBPART 1
+{
+    bool flag = false; //flag is set to true if flight has a boarding gate
+    foreach (BoardingGate bg in boardingGateDict.Values) {
+        if (bg.Flight == flight)
+        {
+            flag = true;
+        }
+    }
+    if (!flag)
+    {
+        Console.WriteLine($"Flight {flight.FlightNumber} has not been assigned a boarding gate.");
+    }
+}
 
+double totalFees = 0; //FOR SUBPART 3
+double totalDiscount = 0; //FOR SUBPART 3
+foreach (Airline al in airlineDict.Values)//SUBPART 2
+{
+    double fee = 0;
+    foreach (Flight flight in al.Flights.Values)
+    {
+        fee += flight.CalculateFees();
+    }
+    totalFees += fee; //FOR SUBPART 3
+    totalDiscount += al.CalculateFees();//FOR SUBPART 3
+    Console.WriteLine($"Subtotal of fees: ${fee + (al.Flights.Values.Count * 300)}");
+    Console.WriteLine($"Subtotal of discounts: ${-1 * al.CalculateFees()}");
+    Console.WriteLine($"Total Final Fees for {al.Name}: ${fee + (al.Flights.Values.Count * 300) - al.CalculateFees()}");
+}
 
+Console.WriteLine($"Subtotal of all Airline fees charged: ${totalFees}"); //SUBPART 3
+Console.WriteLine($"Subtotal of all Airline discounts to be deducted: ${-1 * totalDiscount}");
+Console.WriteLine($"Final Total: ${totalDiscount+totalFees}");
+Console.WriteLine($"Percentage of the subtotal discounts over the total final fees: {(-1 * totalDiscount)/(totalDiscount + totalFees)*100}%");
 
 
 

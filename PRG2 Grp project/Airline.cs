@@ -118,7 +118,7 @@ namespace PRG2_Grp_project
             }
 
 
-            return fees;
+            return fees - f.CalculateFees();
         }
 
 
