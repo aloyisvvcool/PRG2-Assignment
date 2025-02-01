@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace PRG2_Grp_project
 {
-    class Flight : IComparable<Flight>
+    abstract class Flight : IComparable<Flight>
     {
         private string flightNumber;
 
