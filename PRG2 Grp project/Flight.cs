@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 //==========================================================
-// Student Number : S10267956
-// Student Name : Samuel Ng En Yi
-// Partner Name : Aloysius Luke Tay Shi Yuan
+// Student Number : S10266029
+// Student Name : Aloysius Luke Tay Shi Yuan
+// Partner Name : Samuel Ng En Yi
 //==========================================================
 
 namespace PRG2_Grp_project
 {
-    class Flight : IComparable<Flight>
+    abstract class Flight : IComparable<Flight>
     {
         public string FlightNumber { get; set; }
         public string Origin { get; set; }
@@ -27,12 +26,12 @@ namespace PRG2_Grp_project
             Origin = origin;
             Destination = destination;
             ExpectedTime = expectedTime;
-            Status = status ?? "Scheduled";
+            Status = status ?? "Scheduled"; //Flight status defaults to Scheduled if no argument is given
         }
 
         public virtual double CalculateFees()
         {
-            return Origin == "Singapore (SIN)" ? 800 : 500;
+            return Origin == "Singapore (SIN)" ? 800 : 500; //If the flight originates from Singapore (SIN), 800 is returned. Otherwise it is implied that arrives at Singapore (SIN) and 500 is returned.
         }
 
         public int CompareTo(Flight other)

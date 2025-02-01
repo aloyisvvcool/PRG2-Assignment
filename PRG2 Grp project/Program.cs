@@ -4,9 +4,9 @@ using System.Xml.Serialization;
 using System.IO;
 
 //==========================================================
-// Student Number : S10267956
-// Student Name : Samuel Ng En Yi
-// Partner Name : Aloysius Luke Tay Shi Yuan
+// Student Number : S10266029
+// Student Name : Aloysius Luke Tay Shi Yuan
+// Partner Name : Samuel Ng En Yi
 //==========================================================
 
 Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
@@ -17,6 +17,7 @@ Dictionary<string, double> feeDict = new Dictionary<string, double>();
 // Create Terminal 5
 Terminal terminalFive = new Terminal("Terminal 5", airlineDict, flightDict, boardingGateDict, feeDict);
 
+//Task 1
 // Load Airlines
 try
 {
@@ -57,6 +58,7 @@ catch (Exception ex)
     return;
 }
 
+//Task 2
 // Load Flights
 try
 {
@@ -655,31 +657,7 @@ void AdvancedTaskA()
 // Advanced Task B: Calculate total fees per airline
 void AdvancedTaskB()
 {
-    Console.WriteLine("=============================================");
-    Console.WriteLine("Airline Fees for Terminal 5");
-    Console.WriteLine("=============================================");
-
-    // Assign each flight in terminalFive.Flights to its corresponding airline in terminalFive.Airlines
-    foreach (var flight in terminalFive.Flights.Values)
-    {
-        // Extract airline code from the first two characters of the flight number
-        string airlineCode = flight.FlightNumber.Substring(0, 2).ToUpper();
-
-        // Find the airline using its code (we need to search since dictionary keys are full airline names)
-        Airline correspondingAirline = terminalFive.Airlines.Values.FirstOrDefault(a => a.Code == airlineCode);
-
-        if (correspondingAirline != null)
-        {
-            correspondingAirline.AddFlight(flight);
-        }
-
-    }
-
-    foreach (Airline airline in terminalFive.Airlines.Values)
-    {
-        double totalFee = airline.CalculateFees(); // Use the existing method in Airline.cs
-        Console.WriteLine($"{airline.Name}: ${totalFee:F2}");
-    }
+    terminalFive.PrintAirlineFees();
 }
 
 
