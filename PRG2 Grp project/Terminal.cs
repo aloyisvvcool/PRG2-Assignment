@@ -59,9 +59,10 @@ namespace PRG2_Grp_project
 		}
 
 		//Constructor
-		public Terminal(string terminalName, Dictionary<string, Flight> flights, Dictionary<string, BoardingGate> boardingGates, Dictionary<string, double> gateFees)
+		public Terminal(string terminalName, Dictionary<string,Airline> airlines, Dictionary<string, Flight> flights, Dictionary<string, BoardingGate> boardingGates, Dictionary<string, double> gateFees)
 		{
 			TerminalName = terminalName;
+			Airlines = airlines;
 			Flights = flights;
 			BoardingGates = boardingGates;
 			GateFees = gateFees;
