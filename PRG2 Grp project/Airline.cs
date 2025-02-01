@@ -11,117 +11,81 @@ using System.Threading.Tasks;
 // Partner Name : Aloysius Luke Tay Shi Yuan
 //==========================================================
 
-//NO ERROR HANDLING YET
 namespace PRG2_Grp_project
 {
     class Airline
     {
         private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
+        public string Name { get { return name; } set { name = value; } }
 
         private string code;
-
-        public string Code
-        {
-            get { return code; }
-            set { code = value; }
-        }
-
+        public string Code { get { return code; } set { code = value; } }
 
         private Dictionary<string, Flight> flights;
+        public Dictionary<string, Flight> Flights { get { return flights; } set { flights = value; } }
 
-        public Dictionary<string, Flight> Flights
-        {
-            get { return flights; }
-            set { flights = value; }
-        }
-
-        //Constructor
+        // Constructor
         public Airline(string name, string code, Dictionary<string, Flight> flights)
         {
             Name = name;
             Code = code;
-            Flights = flights;
+            Flights = flights ?? new Dictionary<string, Flight>();
         }
 
-
-        //Methods
+        // Methods
         public bool AddFlight(Flight flight)
         {
-            //NOT COMPLETE YET
+            if (flights.ContainsKey(flight.FlightNumber))
+            {
+                Console.WriteLine("Error: Flight number already exists.");
+                return false;
+            }
             flights.Add(flight.FlightNumber, flight);
             return true;
         }
 
-        public bool RemoveFlight(Flight flight)
+        public bool RemoveFlight(string flightNumber)
         {
-            foreach (Flight f in flights.Values)
-            {
-                if (flight == f)
-                {
-                    flights.Remove(f.FlightNumber);
-                    return true;
-                }
-            }
-            return false;
+            return flights.Remove(flightNumber);
         }
 
         public double CalculateFees()
         {
-            //Initialise Fee
             double fees = 0;
-            //Calculate Fee before discounts.
+
             foreach (Flight f in flights.Values)
             {
                 fees += f.CalculateFees();
             }
 
-            int threeFlightDiscountNumber = (Flights.Count / 3);
-
-            //Discount for multiple flights
-            if (flights.Count() > 5)
+            int threeFlightDiscountNumber = flights.Count / 3;
+            if (flights.Count > 5)
             {
-                fees = fees * 0.97;
+                fees *= 0.97;
             }
-
-            //Three Flight discount stackable
             fees -= 350 * threeFlightDiscountNumber;
 
-            //initalise 9pm and 11am
-            DateTime startTime = DateTime.Today.AddHours(21); // 9:00 PM 
-            DateTime endTime = DateTime.Today.AddHours(11); // 11:00 AM  
+            DateTime startTime = DateTime.Today.AddHours(21);
+            DateTime endTime = DateTime.Today.AddHours(11);
 
             foreach (Flight f in flights.Values)
             {
-                //Time discounts
                 if (f.ExpectedTime > startTime || f.ExpectedTime < endTime)
                 {
                     fees -= 110;
                 }
-
-                //Flight Origin discounts
                 if (f.Origin == "Dubai (DXB)" || f.Origin == "Bangkok (BKK)" || f.Origin == "Tokyo (NRT)")
                 {
                     fees -= 25;
                 }
-                //No Special Request Code discounts
                 if (f is NORMFlight)
                 {
                     fees -= 50;
                 }
             }
-
-
+            fees += flights.Values.Count * 300;
             return fees;
         }
-
-
 
         public override string ToString()
         {

@@ -10,58 +10,17 @@ using System.Threading.Tasks;
 // Partner Name : Aloysius Luke Tay Shi Yuan
 //==========================================================
 
-
 namespace PRG2_Grp_project
 {
     class BoardingGate
     {
-        private string gateName;
+        public string GateName { get; set; }
+        public bool SupportsCFFT { get; set; }
+        public bool SupportsDDJB { get; set; }
+        public bool SupportsLWTT { get; set; }
+        public Flight Flight { get; set; }
 
-        public string GateName
-        {
-            get { return gateName; }
-            set { gateName = value; }
-        }
-
-
-        private bool supportsCFFT;
-
-        public bool SupportsCFFT
-        {
-            get { return supportsCFFT; }
-            set { supportsCFFT = value; }
-        }
-
-
-        private bool supportsDDJB;
-
-        public bool SupportsDDJB
-        {
-            get { return supportsDDJB; }
-            set { supportsDDJB = value; }
-        }
-
-
-        private bool supportsLWTT;
-
-        public bool SupportsLWTT
-        {
-            get { return supportsLWTT; }
-            set { supportsLWTT = value; }
-        }
-
-
-        private Flight flight;
-
-        public Flight Flight
-        {
-            get { return flight; }
-            set { flight = value; }
-        }
-
-
-        //Constructor
-        public BoardingGate(string gateName, bool supportsCFFT, bool supportsDDJB, bool supportsLWTT, Flight flight)
+        public BoardingGate(string gateName, bool supportsCFFT, bool supportsDDJB, bool supportsLWTT, Flight flight = null)
         {
             GateName = gateName;
             SupportsCFFT = supportsCFFT;
@@ -70,21 +29,14 @@ namespace PRG2_Grp_project
             Flight = flight;
         }
 
-        //Methods
         public double CalculateFees()
         {
-            return flight.CalculateFees() + 300;
-
+            return Flight != null ? Flight.CalculateFees() + 300 : 0;
         }
 
         public override string ToString()
         {
-            return $"Gate Name:{GateName} SupportsCFFT:{SupportsCFFT} SupportsDDJB:{SupportsDDJB} SupportsLWTT:{SupportsLWTT} Flight:{Flight}";
-
+            return $"Gate Name: {GateName} SupportsCFFT: {SupportsCFFT} SupportsDDJB: {SupportsDDJB} SupportsLWTT: {SupportsLWTT} Flight: {Flight}";
         }
-
-
-
-
     }
 }
