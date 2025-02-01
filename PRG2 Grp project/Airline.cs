@@ -16,61 +16,61 @@ namespace PRG2_Grp_project
 {
     class Airline
     {
-		private string name;
+        private string name;
 
-		public string Name
-		{
-			get { return name; }
-			set { name = value; }
-		}
-
-
-		private string code;
-
-		public string Code
-		{
-			get { return code; }
-			set { code = value; }
-		}
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
 
 
-		private Dictionary<string,Flight> flights;
+        private string code;
 
-		public Dictionary<string, Flight> Flights
-		{
-			get { return flights; }
-			set { flights = value; }
-		}
-
-		//Constructor
-		public Airline(string name, string code, Dictionary<string,Flight> flights)
-		{
-			Name = name;
-			Code = code;
-			Flights = flights;
-		}
+        public string Code
+        {
+            get { return code; }
+            set { code = value; }
+        }
 
 
-		//Methods
-		public bool AddFlight(Flight flight)
-		{
-			//NOT COMPLETE YET
-			flights.Add(flight.FlightNumber, flight);
-			return true;
-		}
+        private Dictionary<string, Flight> flights;
 
-		public bool RemoveFlight(Flight flight)
-		{
-			foreach (Flight f in flights.Values)
-			{
-				if (flight == f)
-				{
-					flights.Remove(f.FlightNumber);
-					return true;
-				}
-			}
-			return false;
-		}
+        public Dictionary<string, Flight> Flights
+        {
+            get { return flights; }
+            set { flights = value; }
+        }
+
+        //Constructor
+        public Airline(string name, string code, Dictionary<string, Flight> flights)
+        {
+            Name = name;
+            Code = code;
+            Flights = flights;
+        }
+
+
+        //Methods
+        public bool AddFlight(Flight flight)
+        {
+            //NOT COMPLETE YET
+            flights.Add(flight.FlightNumber, flight);
+            return true;
+        }
+
+        public bool RemoveFlight(Flight flight)
+        {
+            foreach (Flight f in flights.Values)
+            {
+                if (flight == f)
+                {
+                    flights.Remove(f.FlightNumber);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public double CalculateFees()
         {
@@ -125,7 +125,7 @@ namespace PRG2_Grp_project
 
         public override string ToString()
         {
-			return $"Name:{Name} Code:{Code}";
+            return $"Name:{Name} Code:{Code}";
         }
     }
 }

@@ -15,73 +15,73 @@ namespace PRG2_Grp_project
 {
     class BoardingGate
     {
-		private string gateName;
+        private string gateName;
 
-		public string GateName
-		{
-			get { return gateName; }
-			set { gateName = value; }
-		}
-
-
-		private bool supportsCFFT;
-
-		public bool SupportsCFFT
-		{
-			get { return supportsCFFT; }
-			set { supportsCFFT = value; }
-		}
-
-
-		private bool supportsDDJB;
-
-		public bool SupportsDDJB
+        public string GateName
         {
-			get { return supportsDDJB; }
-			set { supportsDDJB = value; }
-		}
+            get { return gateName; }
+            set { gateName = value; }
+        }
 
 
-		private bool supportsLWTT;
+        private bool supportsCFFT;
 
-		public bool SupportsLWTT
+        public bool SupportsCFFT
         {
-			get { return supportsLWTT; }
-			set { supportsLWTT = value; }
-		}
+            get { return supportsCFFT; }
+            set { supportsCFFT = value; }
+        }
 
 
-		private Flight flight;
+        private bool supportsDDJB;
 
-		public Flight Flight
-		{
-			get { return flight; }
-			set { flight = value; }
-		}
+        public bool SupportsDDJB
+        {
+            get { return supportsDDJB; }
+            set { supportsDDJB = value; }
+        }
 
 
-		//Constructor
-		public BoardingGate(string gateName, bool supportsCFFT, bool supportsDDJB, bool supportsLWTT, Flight flight)
-		{
-			GateName = gateName;
-			SupportsCFFT = supportsCFFT;
-			SupportsDDJB = supportsDDJB;
-			SupportsLWTT = supportsLWTT;
-			Flight = flight;
-		}
+        private bool supportsLWTT;
 
-		//Methods
-		public double CalculateFees()
-		{
-			return flight.CalculateFees() + 300;
+        public bool SupportsLWTT
+        {
+            get { return supportsLWTT; }
+            set { supportsLWTT = value; }
+        }
+
+
+        private Flight flight;
+
+        public Flight Flight
+        {
+            get { return flight; }
+            set { flight = value; }
+        }
+
+
+        //Constructor
+        public BoardingGate(string gateName, bool supportsCFFT, bool supportsDDJB, bool supportsLWTT, Flight flight)
+        {
+            GateName = gateName;
+            SupportsCFFT = supportsCFFT;
+            SupportsDDJB = supportsDDJB;
+            SupportsLWTT = supportsLWTT;
+            Flight = flight;
+        }
+
+        //Methods
+        public double CalculateFees()
+        {
+            return flight.CalculateFees() + 300;
 
         }
 
         public override string ToString()
         {
-			return $"Gate Name:{GateName} SupportsCFFT:{SupportsCFFT} SupportsDDJB:{SupportsDDJB} SupportsLWTT:{SupportsLWTT} Flight:{Flight}";
+            return $"Gate Name:{GateName} SupportsCFFT:{SupportsCFFT} SupportsDDJB:{SupportsDDJB} SupportsLWTT:{SupportsLWTT} Flight:{Flight}";
 
-		}
+        }
 
 
 

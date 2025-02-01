@@ -17,7 +17,7 @@ Dictionary<string, Airline> airlineDict = new Dictionary<string, Airline>();
 Dictionary<string, BoardingGate> boardingGateDict = new Dictionary<string, BoardingGate>();
 Dictionary<string, double> feeDict = new Dictionary<string, double>();
 //Create terminal 5
-Terminal terminalFive = new Terminal("Terminal 5",airlineDict,flightDict,boardingGateDict,feeDict);
+Terminal terminalFive = new Terminal("Terminal 5", airlineDict, flightDict, boardingGateDict, feeDict);
 
 
 
@@ -59,24 +59,24 @@ foreach (string data in flightStrings.Skip(1))
     //Initalise Flight object
     Flight flight = null;
 
-{
-    if (splitData[4] == "LWTT")
     {
-        flight = new LWTTFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 500);
+        if (splitData[4] == "LWTT")
+        {
+            flight = new LWTTFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 500);
+        }
+        else if (splitData[4] == "DDJB")
+        {
+            flight = new DDJBFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 300);
+        }
+        else if (splitData[4] == "CFFT")
+        {
+            flight = new CFFTFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 150);
+        }
+        else
+        {
+            flight = new NORMFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null);
+        }
     }
-    else if (splitData[4] == "DDJB")
-    {
-        flight = new DDJBFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 300);
-    }
-    else if (splitData[4] == "CFFT")
-    {
-        flight = new CFFTFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null, 150);
-    }
-    else 
-    {
-        flight = new NORMFlight(splitData[0], splitData[1], splitData[2], Convert.ToDateTime(splitData[3]), null);
-    }
-}
 
     terminalFive.Flights.Add(splitData[0], flight);
 }
@@ -91,10 +91,24 @@ foreach (string data in airlinesStrings)
     airlineKeyValuePairs.Add(splitData[1], splitData[0]);
 }
 
-//GLOBAL VARIABLE USED FOR TASK 5,9
 
-//END OF GLOBAL VARIABLES
+//GLOBAL VARIABLE FOR TASK 5,9, ADVANCED
+Dictionary<string, string> specialCodeDict = new Dictionary<string, string>();
+//Dictionary to map code to special request, e.g. EK 870 to DDJB
+for (int i = 1; i < flightStrings.Count(); i++) //Skip header
+{
+    string code = "";
+    try
+    {
+        code = flightStrings[i].Split(",")[4];
+    }
+    catch
+    {
+        //Keeps code as "" for Normal Flights
+    }
 
+    specialCodeDict.Add(flightStrings[i].Split(",")[0], code);
+}
 
 
 //TASK 3 (Complete)
@@ -120,22 +134,6 @@ void TaskFive()
     string flightNumber = "";
     Flight selectedFlight = null;
 
-    Dictionary<string, string> specialCodeDict = new Dictionary<string, string>();
-    //Dictionary to map code to special request, e.g. EK 870 to DDJB
-    for (int i = 1; i < flightStrings.Count(); i++) //Skip header
-    {
-        string code = "";
-        try
-        {
-            code = flightStrings[i].Split(",")[4];
-        }
-        catch
-        {
-            //Keeps code as "" for Normal Flights
-        }
-
-        specialCodeDict.Add(flightStrings[i].Split(",")[0], code);
-    }
 
 
     while (true)
@@ -165,7 +163,8 @@ void TaskFive()
             boardingGateNumber = Console.ReadLine();
             if (terminalFive.BoardingGates.ContainsKey(boardingGateNumber))
             {
-                if (specialCodeDict[selectedFlight.FlightNumber] == "DJJB" && terminalFive.BoardingGates[boardingGateNumber].SupportsDDJB == true)
+                Console.WriteLine($"{selectedFlight.FlightNumber}, {specialCodeDict[selectedFlight.FlightNumber]}");
+                if (specialCodeDict[selectedFlight.FlightNumber] == "DDJB" && terminalFive.BoardingGates[boardingGateNumber].SupportsDDJB == true)
                 {
                     break;
                 }
@@ -177,7 +176,7 @@ void TaskFive()
                 {
                     break;
                 }
-                else if (specialCodeDict[selectedFlight.FlightNumber] == "")
+                else if (specialCodeDict[selectedFlight.FlightNumber] == "" || specialCodeDict[selectedFlight.FlightNumber] == "None")
                 {
                     break;
                 }
@@ -202,12 +201,11 @@ void TaskFive()
             Console.WriteLine($"Origin: {selectedFlight.Origin}");
             Console.WriteLine($"Destination: {selectedFlight.Destination}");
             Console.WriteLine($"Expected Time: {selectedFlight.ExpectedTime}");
-            //HOW TO DO DIFFERENTIATE THE CODES
-            if (selectedFlight.Status == null)
+            if (selectedFlight is NORMFlight)
             {
                 Console.WriteLine($"Special Request Code: None");
             }
-            else 
+            else
             {
                 if (selectedFlight is CFFTFlight)
                 {
@@ -344,9 +342,18 @@ void TaskSix()
                 }
             }
 
+            string specialRequestCode = "";
+            while (true)
+            {
+                Console.Write("Enter Special Request Code (CFFT/DDJB/LWTT/None): ");
+                specialRequestCode = Console.ReadLine();
+                if (specialRequestCode == "CFFT" || specialRequestCode == "DDJB" || specialRequestCode == "LWTT" || specialRequestCode == "None")
+                {
+                    break;
+                }
+                Console.WriteLine("Invalid input! Please enter a valid special request code.");
+            }
 
-            Console.Write("Enter Special Request Code (CFFT/DDJB/LWTT/None): ");
-            string specialRequestCode = Console.ReadLine();
 
             //Bool for valid info
             Flight newFlight = null;
@@ -382,6 +389,9 @@ void TaskSix()
                     writer.WriteLine($"{newFlight.FlightNumber},{newFlight.Origin},{newFlight.Destination},{newFlight.ExpectedTime},{specialRequestCode}");
                 }
                 Console.WriteLine($"Flight {flightNumber} has been added!");
+
+                //Add new flight to special code dict
+                specialCodeDict[newFlight.FlightNumber] = specialRequestCode;
                 break;
 
             }
@@ -393,7 +403,7 @@ void TaskSix()
     }
     //Call the flight
     AddFlight();
-    
+
 
     //Prompt for user if they want to add another flight
     while (true)
@@ -515,22 +525,7 @@ void AdvancedTaskA()
     Console.WriteLine($"Total number of Flights without Boarding Gate: {flightWithoutBoardingGateQueue.Count()}");
     Console.WriteLine($"Total number of unassigned Boarding Gates: {freeBoardingGates.Count()}");
 
-    Dictionary<string, string> specialCodeDict = new Dictionary<string, string>();
-    //Dictionary to map code to special request, e.g. EK 870 to DDJB
-    for (int i = 1; i < flightStrings.Count(); i++) //Skip header
-    {
-        string code = "";
-        try
-        {
-            code = flightStrings[i].Split(",")[4];
-        }
-        catch
-        {
-            //Keeps code as "" for Normal Flights
-        }
 
-        specialCodeDict.Add(flightStrings[i].Split(",")[0], code);
-    }
 
     //Checking if flight has special request code, match and assign to gate, then print Flight details.
     //Initialise Number of processed Flights and Boarding Gate
@@ -612,7 +607,7 @@ void AdvancedTaskA()
         Console.WriteLine("Unable to calculate total number of Flights and Boarding Gates that were processed automatically over those that were already assigned because 0 Flights and Boarding Gates were assigned before");
     }
 
-    
+
 }
 
 
@@ -863,7 +858,7 @@ while (true)
     {
         TaskSeven();
     }
-    else if(option == "6")
+    else if (option == "6")
     {
         TaskEight();
     }

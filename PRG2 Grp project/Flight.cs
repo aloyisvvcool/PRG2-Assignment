@@ -13,99 +13,100 @@ using System.Threading.Tasks;
 
 namespace PRG2_Grp_project
 {
-    class Flight:IComparable<Flight>
+    class Flight : IComparable<Flight>
     {
-		private string flightNumber;
+        private string flightNumber;
 
-		public string FlightNumber
-		{
-			get { return flightNumber; }
-			set { flightNumber = value; }
-		}
+        public string FlightNumber
+        {
+            get { return flightNumber; }
+            set { flightNumber = value; }
+        }
 
-		private string origin;
+        private string origin;
 
-		public string Origin
-		{
-			get { return origin; }
-			set { origin = value; }
-		}
-
-
-		private string destination;
-
-		public string Destination
-		{
-			get { return destination; }
-			set { destination = value; }
-		}
-
-
-		private DateTime expectedTime;
-
-		public DateTime ExpectedTime
-		{
-			get { return expectedTime; }
-			set { expectedTime = value; }
-		}
-
-
-		private string status;
-
-		public string Status
-		{
-			get { return status; }
-			set { status = value; }
-		}
-
-		//Constructor
-		public Flight(string flightNumber, string origin, string destination, DateTime expectedTime, string status)
-		{
-			FlightNumber = flightNumber;
-			Origin = origin;
-			Destination = destination;
-			ExpectedTime = expectedTime;
-			Status = status;
-		}
-
-
-		//Methods
-		public virtual double CalculateFees()
-		{
-			if (Origin == "Singapore (SIN)") {
-				return 800;
-			}
-			else
-			{
-				return 500;
-			}
-		}
-
-		//Icomparable
-		public int CompareTo(Flight other)
-		{
-			
-			return ExpectedTime.CompareTo(other.ExpectedTime);
+        public string Origin
+        {
+            get { return origin; }
+            set { origin = value; }
         }
 
 
-		//ToString
+        private string destination;
+
+        public string Destination
+        {
+            get { return destination; }
+            set { destination = value; }
+        }
+
+
+        private DateTime expectedTime;
+
+        public DateTime ExpectedTime
+        {
+            get { return expectedTime; }
+            set { expectedTime = value; }
+        }
+
+
+        private string status;
+
+        public string Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
+
+        //Constructor
+        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime, string status)
+        {
+            FlightNumber = flightNumber;
+            Origin = origin;
+            Destination = destination;
+            ExpectedTime = expectedTime;
+            Status = status;
+        }
+
+
+        //Methods
+        public virtual double CalculateFees()
+        {
+            if (Origin == "Singapore (SIN)")
+            {
+                return 800;
+            }
+            else
+            {
+                return 500;
+            }
+        }
+
+        //Icomparable
+        public int CompareTo(Flight other)
+        {
+
+            return ExpectedTime.CompareTo(other.ExpectedTime);
+        }
+
+
+        //ToString
         public override string ToString()
         {
-			return $"Flight Number:{FlightNumber} Origin:{Origin} Destination:{Destination} Expected Time:{ExpectedTime} Status:{Status} ";
+            return $"Flight Number:{FlightNumber} Origin:{Origin} Destination:{Destination} Expected Time:{ExpectedTime} Status:{Status} ";
         }
 
     }
 
-	class NORMFlight:Flight
-	{
-		public NORMFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status):base(flightNumber,origin,destination,expectedTime,status) 
-		{
-			
-		}
+    class NORMFlight : Flight
+    {
+        public NORMFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status) : base(flightNumber, origin, destination, expectedTime, status)
+        {
 
-		public override double CalculateFees()
-		{
+        }
+
+        public override double CalculateFees()
+        {
             if (Origin == "Singapore (SIN)")
             {
                 return 800;
@@ -118,7 +119,7 @@ namespace PRG2_Grp_project
 
         public override string ToString()
         {
-			return base.ToString();
+            return base.ToString();
         }
     }
 
@@ -134,12 +135,12 @@ namespace PRG2_Grp_project
 
         public LWTTFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee) : base(flightNumber, origin, destination, expectedTime, status)
         {
-			RequestFee = requestFee;
+            RequestFee = requestFee;
         }
 
         public override string ToString()
         {
-            return base.ToString() + $"Request Fee:{requestFee}";	
+            return base.ToString() + $"Request Fee:{requestFee}";
         }
 
         public override double CalculateFees()
@@ -168,7 +169,7 @@ namespace PRG2_Grp_project
 
         public DDJBFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee) : base(flightNumber, origin, destination, expectedTime, status)
         {
-			RequestFee = requestFee;
+            RequestFee = requestFee;
         }
 
         public override double CalculateFees()
@@ -191,17 +192,17 @@ namespace PRG2_Grp_project
     }
     class CFFTFlight : Flight
     {
-		private double requestFee;
+        private double requestFee;
 
-		public double RequestFee
-		{
-			get { return requestFee; }
-			set { requestFee = value; }
-		}
-
-		public CFFTFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee) : base(flightNumber, origin, destination, expectedTime, status)
+        public double RequestFee
         {
-			RequestFee= requestFee;
+            get { return requestFee; }
+            set { requestFee = value; }
+        }
+
+        public CFFTFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee) : base(flightNumber, origin, destination, expectedTime, status)
+        {
+            RequestFee = requestFee;
         }
 
         public override double CalculateFees()

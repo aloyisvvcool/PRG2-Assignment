@@ -18,98 +18,97 @@ namespace PRG2_Grp_project
 {
     class Terminal
     {
-		private string terminalName;
+        private string terminalName;
 
-		public string TerminalName
-		{
-			get { return terminalName; }
-			set { terminalName = value; }
-		}
+        public string TerminalName
+        {
+            get { return terminalName; }
+            set { terminalName = value; }
+        }
 
-		private Dictionary<string,Airline> airlines;
+        private Dictionary<string, Airline> airlines;
 
-		public Dictionary<string,Airline> Airlines
-		{
-			get { return airlines; }
-			set { airlines = value; }
-		}
+        public Dictionary<string, Airline> Airlines
+        {
+            get { return airlines; }
+            set { airlines = value; }
+        }
 
-		private Dictionary<string,Flight> flights;
+        private Dictionary<string, Flight> flights;
 
-		public Dictionary<string,Flight> Flights
-		{
-			get { return flights; }
-			set { flights = value; }
-		}
+        public Dictionary<string, Flight> Flights
+        {
+            get { return flights; }
+            set { flights = value; }
+        }
 
-		private Dictionary<string,BoardingGate> boardingGates;
+        private Dictionary<string, BoardingGate> boardingGates;
 
-		public Dictionary<string,BoardingGate> BoardingGates
-		{
-			get { return boardingGates; }
-			set { boardingGates = value; }
-		}
+        public Dictionary<string, BoardingGate> BoardingGates
+        {
+            get { return boardingGates; }
+            set { boardingGates = value; }
+        }
 
-		private Dictionary<string,double> gateFees;
+        private Dictionary<string, double> gateFees;
 
-		public Dictionary<string,double> GateFees
-		{
-			get { return gateFees; }
-			set { gateFees = value; }
-		}
+        public Dictionary<string, double> GateFees
+        {
+            get { return gateFees; }
+            set { gateFees = value; }
+        }
 
-		//Constructor
-		public Terminal(string terminalName, Dictionary<string,Airline> airlines, Dictionary<string, Flight> flights, Dictionary<string, BoardingGate> boardingGates, Dictionary<string, double> gateFees)
-		{
-			TerminalName = terminalName;
-			Airlines = airlines;
-			Flights = flights;
-			BoardingGates = boardingGates;
-			GateFees = gateFees;
-		}
+        //Constructor
+        public Terminal(string terminalName, Dictionary<string, Airline> airlines, Dictionary<string, Flight> flights, Dictionary<string, BoardingGate> boardingGates, Dictionary<string, double> gateFees)
+        {
+            TerminalName = terminalName;
+            Airlines = airlines;
+            Flights = flights;
+            BoardingGates = boardingGates;
+            GateFees = gateFees;
+        }
 
-		//Methods
-		public bool AddAirline(Airline airline)
-		{
-			Airlines.Add(airline.Name, airline);
-			return true;
-		}
+        //Methods
+        public bool AddAirline(Airline airline)
+        {
+            Airlines.Add(airline.Name, airline);
+            return true;
+        }
 
-		public bool AddBoardingGate(BoardingGate gate)
-		{
-			BoardingGates.Add(gate.GateName, gate);
-			return true;
-		}
+        public bool AddBoardingGate(BoardingGate gate)
+        {
+            BoardingGates.Add(gate.GateName, gate);
+            return true;
+        }
 
-		public Airline GetAirlineFromFlight(Flight flight)
-		{
-			//Use first two characters of FlightNumber 
-			foreach (Airline airline in Airlines.Values)
-			{
-				if (flight.FlightNumber.Substring(0,2) == airline.Code)
-				{
-					return airline;
-				}
-			}
-
-			//If no airline is found
-			return null;
-		}
-
-		public void PrintAirlineFees()
-		{
-			Console.WriteLine("Airline Fees:");
-			foreach (Airline airline in Airlines.Values)
-			{
-				Console.WriteLine($"{airline.Name}: {airline.CalculateFees() + (airline.Flights.Values.Count * 300)}"); //airline.Flights.Values.Count * 300 to account for boarding gate fees
+        public Airline GetAirlineFromFlight(Flight flight)
+        {
+            //Use first two characters of FlightNumber 
+            foreach (Airline airline in Airlines.Values)
+            {
+                if (flight.FlightNumber.Substring(0, 2) == airline.Code)
+                {
+                    return airline;
+                }
             }
-		}
+
+            //If no airline is found
+            return null;
+        }
+
+        public void PrintAirlineFees()
+        {
+            Console.WriteLine("Airline Fees:");
+            foreach (Airline airline in Airlines.Values)
+            {
+                Console.WriteLine($"{airline.Name}: {airline.CalculateFees() + (airline.Flights.Values.Count * 300)}"); //airline.Flights.Values.Count * 300 to account for boarding gate fees
+            }
+        }
 
         public override string ToString()
         {
-			return $"Terminal Name:{TerminalName}";
+            return $"Terminal Name:{TerminalName}";
         }
-		//INCOMPLETE
 
 
     }
