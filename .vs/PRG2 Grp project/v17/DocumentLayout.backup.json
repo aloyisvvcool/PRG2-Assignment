@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\naive\\onedrive - ngee ann polytechnic\\desktop\\nigs\\prg2-assignment\\prg2 grp project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|solutionrelative:prg2 grp project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -28,6 +29,33 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\naive\\onedrive - ngee ann polytechnic\\desktop\\nigs\\prg2-assignment\\prg2 grp project\\airlines.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+=======
+      "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\aloys\\onedrive\\documents\\github\\prg2-assignment\\prg2 grp project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|solutionrelative:prg2 grp project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\aloys\\onedrive\\documents\\github\\prg2-assignment\\prg2 grp project\\boardinggate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|solutionrelative:prg2 grp project\\boardinggate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\aloys\\onedrive\\documents\\github\\prg2-assignment\\prg2 grp project\\boardinggates.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|solutionrelative:prg2 grp project\\boardinggates.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\aloys\\onedrive\\documents\\github\\prg2-assignment\\prg2 grp project\\terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|solutionrelative:prg2 grp project\\terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\aloys\\onedrive\\documents\\github\\prg2-assignment\\prg2 grp project\\flight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|solutionrelative:prg2 grp project\\flight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\aloys\\onedrive\\documents\\github\\prg2-assignment\\prg2 grp project\\airline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|solutionrelative:prg2 grp project\\airline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|c:\\users\\aloys\\onedrive\\documents\\github\\prg2-assignment\\prg2 grp project\\airlines.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+>>>>>>> Stashed changes
       "RelativeMoniker": "D:0:0:{C6393DA3-5C14-4713-8D4D-21EB582E5A65}|PRG2 Grp project\\PRG2 Grp project.csproj|solutionrelative:prg2 grp project\\airlines.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
@@ -67,19 +95,28 @@
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 3,
+=======
+              "DocumentIndex": 4,
+>>>>>>> Stashed changes
               "Title": "Flight.cs",
               "DocumentMoniker": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\Flight.cs",
               "RelativeDocumentMoniker": "PRG2 Grp project\\Flight.cs",
               "ToolTip": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\Flight.cs",
               "RelativeToolTip": "PRG2 Grp project\\Flight.cs",
+<<<<<<< Updated upstream
               "ViewState": "AgIAAFsAAAAAAAAAAADwv38AAAAFAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAE4AAAAAAAAAAADwv2wAAAAAAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T09:23:28.508Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 4,
               "Title": "Terminal.cs",
               "DocumentMoniker": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\Terminal.cs",
@@ -106,26 +143,65 @@
             },
             {
               "$type": "Document",
+=======
+>>>>>>> Stashed changes
               "DocumentIndex": 5,
               "Title": "Airline.cs",
               "DocumentMoniker": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\Airline.cs",
               "RelativeDocumentMoniker": "PRG2 Grp project\\Airline.cs",
               "ToolTip": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\Airline.cs",
               "RelativeToolTip": "PRG2 Grp project\\Airline.cs",
+<<<<<<< Updated upstream
               "ViewState": "AgIAAGMAAAAAAAAAAAAmwIUAAAAAAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAGUAAAAAAAAAAAAQwIcAAAAAAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T09:32:10.937Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
+=======
+              "DocumentIndex": 3,
+              "Title": "Terminal.cs",
+              "DocumentMoniker": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\Terminal.cs",
+              "RelativeDocumentMoniker": "PRG2 Grp project\\Terminal.cs",
+              "ToolTip": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\Terminal.cs",
+              "RelativeToolTip": "PRG2 Grp project\\Terminal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T09:49:23.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BoardingGate.cs",
+              "DocumentMoniker": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\BoardingGate.cs",
+              "RelativeDocumentMoniker": "PRG2 Grp project\\BoardingGate.cs",
+              "ToolTip": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\BoardingGate.cs",
+              "RelativeToolTip": "PRG2 Grp project\\BoardingGate.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAcwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T09:23:19.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+>>>>>>> Stashed changes
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\Program.cs",
               "RelativeDocumentMoniker": "PRG2 Grp project\\Program.cs",
               "ToolTip": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\Program.cs",
               "RelativeToolTip": "PRG2 Grp project\\Program.cs",
+<<<<<<< Updated upstream
               "ViewState": "AgIAAKQCAAAAAAAAAAAiwPsDAAAnAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAADUCAAAAAAAAAAAcwE0CAAAuAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T09:15:24.849Z",
               "EditorCaption": ""
