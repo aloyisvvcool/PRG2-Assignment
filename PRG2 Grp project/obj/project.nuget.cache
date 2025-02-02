@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< Updated upstream:PRG2 Grp project/obj/project.nuget.cache
   "dgSpecHash": "XBxu2FL3t2U=",
+=======
+  "dgSpecHash": "MK0z3SRPmOs=",
+>>>>>>> Stashed changes:obj/project.nuget.cache
   "success": true,
   "projectFilePath": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
   "expectedPackageFiles": [],
