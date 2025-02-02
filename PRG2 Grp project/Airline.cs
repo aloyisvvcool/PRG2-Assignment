@@ -64,7 +64,7 @@ namespace PRG2_Grp_project
                 discount += fees * 0.03; //For each airline with more than 5 flights arriving/departing, the airline will receive an additional discount
             }
 
-            discount += 350 * Math.Floor(Convert.ToDouble(flights.Count / 3)); //For every 3 flights arriving/departing, airlines will receive a discoun
+            discount += 350 * Math.Floor(Convert.ToDouble(flights.Count / 3)); //For every 3 flights arriving/departing, airlines will receive a discount
 
             DateTime startTime = DateTime.Today.AddHours(21); //Represents 9PM
             DateTime endTime = DateTime.Today.AddHours(11); //Represents 11AM

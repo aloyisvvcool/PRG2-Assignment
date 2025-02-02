@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PRG2 Grp project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< Updated upstream
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+725e433f15f59a675f9ab6c43082e1153fad97b6")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57e863855fa4f4a963cde3a0373769e244a14d18")]
->>>>>>> Stashed changes
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f0971705fe923e89d411fed874ede671a78d2a1")]
 [assembly: System.Reflection.AssemblyProductAttribute("PRG2 Grp project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PRG2 Grp project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

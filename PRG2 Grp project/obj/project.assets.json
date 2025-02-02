@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\naive\\.nuget\\packages\\": {}
+    "C:\\Users\\aloys\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
+      "projectUniqueName": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
       "projectName": "PRG2 Grp project",
-      "projectPath": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
-      "packagesPath": "C:\\Users\\naive\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\naive\\OneDrive - Ngee Ann Polytechnic\\Desktop\\nigs\\PRG2-Assignment\\PRG2 Grp project\\obj\\",
+      "projectPath": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\PRG2 Grp project.csproj",
+      "packagesPath": "C:\\Users\\aloys\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aloys\\OneDrive\\Documents\\GitHub\\PRG2-Assignment\\PRG2 Grp project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\naive\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aloys\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

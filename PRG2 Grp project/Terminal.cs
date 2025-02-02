@@ -114,6 +114,7 @@ namespace PRG2_Grp_project
                 Console.WriteLine($"{airline.Name,-18}: ${$"{totalFee + totalDiscount:F2}",-10}${$"{totalDiscount:F2}",-10}${$"{totalFee:F2}",-10}");
             }
             Console.WriteLine($"{"Total",-18}: ${$"{allFees + allDiscounts:F2}",-10}${$"{allDiscounts:F2}",-10}${$"{allFees:F2}",-10}");
+            Console.WriteLine($"Percentage of subtotal discounts over final total fees: {allDiscounts/(allFees + allDiscounts)*100}%");
         }
 
         public override string ToString()
