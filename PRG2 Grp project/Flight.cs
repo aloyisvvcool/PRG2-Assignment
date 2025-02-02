@@ -15,211 +15,115 @@ namespace PRG2_Grp_project
 {
     abstract class Flight : IComparable<Flight>
     {
-        private string flightNumber;
+        public string FlightNumber { get; set; }
+        public string Origin { get; set; }
+        public string Destination { get; set; }
+        public DateTime ExpectedTime { get; set; }
+        public string Status { get; set; }
 
-        public string FlightNumber
-        {
-            get { return flightNumber; }
-            set { flightNumber = value; }
-        }
-
-        private string origin;
-
-        public string Origin
-        {
-            get { return origin; }
-            set { origin = value; }
-        }
-
-
-        private string destination;
-
-        public string Destination
-        {
-            get { return destination; }
-            set { destination = value; }
-        }
-
-
-        private DateTime expectedTime;
-
-        public DateTime ExpectedTime
-        {
-            get { return expectedTime; }
-            set { expectedTime = value; }
-        }
-
-
-        private string status;
-
-        public string Status
-        {
-            get { return status; }
-            set { status = value; }
-        }
-
-        //Constructor
-        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime, string status)
+        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime, string status = "Scheduled")
         {
             FlightNumber = flightNumber;
             Origin = origin;
             Destination = destination;
             ExpectedTime = expectedTime;
-            Status = status;
+            Status = status ?? "Scheduled"; //Flight status defaults to Scheduled if no argument is given
         }
 
-
-        //Methods
         public virtual double CalculateFees()
         {
-            if (Origin == "Singapore (SIN)")
-            {
-                return 800;
-            }
-            else
-            {
-                return 500;
-            }
+            return Origin == "Singapore (SIN)" ? 800 : 500; //If the flight originates from Singapore (SIN), 800 is returned. Otherwise it is implied that arrives at Singapore (SIN) and 500 is returned.
         }
 
-        //Icomparable
         public int CompareTo(Flight other)
         {
-
             return ExpectedTime.CompareTo(other.ExpectedTime);
         }
 
-
-        //ToString
         public override string ToString()
         {
-            return $"Flight Number:{FlightNumber} Origin:{Origin} Destination:{Destination} Expected Time:{ExpectedTime} Status:{Status} ";
+            return $"{FlightNumber,-15} {Origin,-20} {Destination,-20} {ExpectedTime:dd/MM/yyyy h:mm:ss tt} {Status,-15}";
         }
 
     }
 
     class NORMFlight : Flight
     {
-        public NORMFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status) : base(flightNumber, origin, destination, expectedTime, status)
-        {
-
-        }
+        public NORMFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status = "Scheduled")
+            : base(flightNumber, origin, destination, expectedTime, status) { }
 
         public override double CalculateFees()
         {
-            if (Origin == "Singapore (SIN)")
-            {
-                return 800;
-            }
-            else
-            {
-                return 500;
-            }
+            return base.CalculateFees(); // Normal flight has standard fees
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            return $"{FlightNumber,-15} {Origin,-20} {Destination,-20} {ExpectedTime:dd/MM/yyyy h:mm:ss tt} {Status,-15}";
         }
     }
 
     class LWTTFlight : Flight
     {
-        private double requestFee;
+        public double RequestFee { get; set; }
 
-        public double RequestFee
-        {
-            get { return requestFee; }
-            set { requestFee = value; }
-        }
-
-        public LWTTFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee) : base(flightNumber, origin, destination, expectedTime, status)
+        public LWTTFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee)
+            : base(flightNumber, origin, destination, expectedTime, status)
         {
             RequestFee = requestFee;
         }
 
-        public override string ToString()
-        {
-            return base.ToString() + $"Request Fee:{requestFee}";
-        }
-
         public override double CalculateFees()
         {
-            if (Origin == "Singapore (SIN)")
-            {
-                return 800 + 500;
-            }
-            else
-            {
-                return 500 + 500;
-            }
+            return base.CalculateFees() + 500; // LWTT Fee
+        }
+
+        public override string ToString()
+        {
+            return $"{FlightNumber,-15} {Origin,-20} {Destination,-20} {ExpectedTime:dd/MM/yyyy h:mm:ss tt} {Status,-15}";
         }
 
     }
 
     class DDJBFlight : Flight
     {
-        private double requestFee;
+        public double RequestFee { get; set; }
 
-        public double RequestFee
-        {
-            get { return requestFee; }
-            set { requestFee = value; }
-        }
-
-        public DDJBFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee) : base(flightNumber, origin, destination, expectedTime, status)
+        public DDJBFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee)
+            : base(flightNumber, origin, destination, expectedTime, status)
         {
             RequestFee = requestFee;
         }
 
         public override double CalculateFees()
         {
-            if (Origin == "Singapore (SIN)")
-            {
-                return 800 + 300;
-            }
-            else
-            {
-                return 500 + 300;
-            }
+            return base.CalculateFees() + 300; // DDJB Fee
         }
 
         public override string ToString()
         {
-            return base.ToString() + $"Request Fee:{requestFee}";
+            return $"{FlightNumber,-15} {Origin,-20} {Destination,-20} {ExpectedTime:dd/MM/yyyy h:mm:ss tt} {Status,-15}";
         }
-
     }
+
     class CFFTFlight : Flight
     {
-        private double requestFee;
+        public double RequestFee { get; set; }
 
-        public double RequestFee
-        {
-            get { return requestFee; }
-            set { requestFee = value; }
-        }
-
-        public CFFTFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee) : base(flightNumber, origin, destination, expectedTime, status)
+        public CFFTFlight(string flightNumber, string origin, string destination, DateTime expectedTime, string status, double requestFee)
+            : base(flightNumber, origin, destination, expectedTime, status)
         {
             RequestFee = requestFee;
         }
 
         public override double CalculateFees()
         {
-            if (Origin == "Singapore (SIN)")
-            {
-                return 800 + 150;
-            }
-            else
-            {
-                return 500 + 150;
-            }
+            return base.CalculateFees() + 150; // CFFT Fee
         }
 
         public override string ToString()
         {
-            return base.ToString() + $"Request Fee:{requestFee}";
+            return $"{FlightNumber,-15} {Origin,-20} {Destination,-20} {ExpectedTime:dd/MM/yyyy h:mm:ss tt} {Status,-15}";
         }
     }
 }

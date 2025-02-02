@@ -81,28 +81,39 @@ namespace PRG2_Grp_project
             return true;
         }
 
-        public Airline GetAirlineFromFlight(Flight flight)
-        {
-            //Use first two characters of FlightNumber 
-            foreach (Airline airline in Airlines.Values)
-            {
-                if (flight.FlightNumber.Substring(0, 2) == airline.Code)
-                {
-                    return airline;
-                }
-            }
-
-            //If no airline is found
-            return null;
-        }
-
         public void PrintAirlineFees()
         {
-            Console.WriteLine("Airline Fees:");
-            foreach (Airline airline in Airlines.Values)
+            Console.WriteLine("=============================================");
+            Console.WriteLine($"Airline Fees for {TerminalName}");
+            Console.WriteLine("=============================================");
+            Console.WriteLine($"{"Airline",-18}: {"Subtotal",-10} {"Discount",-10} {"Total",-10}");
+            // Assign each flight in terminalFive.Flights to its corresponding airline in terminalFive.Airlines
+            foreach (var flight in flights.Values)
             {
-                Console.WriteLine($"{airline.Name}: {airline.CalculateFees() + (airline.Flights.Values.Count * 300)}"); //airline.Flights.Values.Count * 300 to account for boarding gate fees
+                // Extract airline code from the first two characters of the flight number
+                string airlineCode = flight.FlightNumber.Substring(0, 2).ToUpper();
+
+                // Find the airline using its code (we need to search since dictionary keys are full airline names)
+                Airline correspondingAirline = airlines.Values.FirstOrDefault(a => a.Code == airlineCode); //Returns the name of the airline given airlineCode
+
+                if (correspondingAirline != null)
+                {
+                    correspondingAirline.AddFlight(flight);
+                }
+
             }
+
+            double allFees = 0;
+            double allDiscounts = 0;
+            foreach (Airline airline in airlines.Values)
+            {
+                double totalFee = airline.CalculateFees(); // Use the existing methods in Airline.cs
+                double totalDiscount = airline.CalculateDiscount();
+                allFees += totalFee;
+                allDiscounts += totalDiscount;
+                Console.WriteLine($"{airline.Name,-18}: ${$"{totalFee + totalDiscount:F2}",-10}${$"{totalDiscount:F2}",-10}${$"{totalFee:F2}",-10}");
+            }
+            Console.WriteLine($"{"Total",-18}: ${$"{allFees + allDiscounts:F2}",-10}${$"{allDiscounts:F2}",-10}${$"{allFees:F2}",-10}");
         }
 
         public override string ToString()

@@ -17,115 +17,119 @@ namespace PRG2_Grp_project
     class Airline
     {
         private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
+        public string Name { get { return name; } set { name = value; } }
 
         private string code;
-
-        public string Code
-        {
-            get { return code; }
-            set { code = value; }
-        }
-
+        public string Code { get { return code; } set { code = value; } }
 
         private Dictionary<string, Flight> flights;
+        public Dictionary<string, Flight> Flights { get { return flights; } set { flights = value; } }
 
-        public Dictionary<string, Flight> Flights
-        {
-            get { return flights; }
-            set { flights = value; }
-        }
-
-        //Constructor
+        // Constructor
         public Airline(string name, string code, Dictionary<string, Flight> flights)
         {
             Name = name;
             Code = code;
-            Flights = flights;
+            Flights = flights ?? new Dictionary<string, Flight>();
         }
 
-
-        //Methods
+        // Methods
         public bool AddFlight(Flight flight)
         {
-            //NOT COMPLETE YET
+            if (flights.ContainsKey(flight.FlightNumber))
+            {
+                return false;
+            }
             flights.Add(flight.FlightNumber, flight);
             return true;
         }
 
-        public bool RemoveFlight(Flight flight)
+        public bool RemoveFlight(string flightNumber)
         {
-            foreach (Flight f in flights.Values)
-            {
-                if (flight == f)
-                {
-                    flights.Remove(f.FlightNumber);
-                    return true;
-                }
-            }
-            return false;
+            return flights.Remove(flightNumber);
         }
 
         public double CalculateFees()
         {
-            //Initialise Fee
             double fees = 0;
-            //Calculate Fee before discounts.
+            double discount = 0;
+
             foreach (Flight f in flights.Values)
             {
                 fees += f.CalculateFees();
             }
 
-            int threeFlightDiscountNumber = (Flights.Count / 3);
-
-            //Discount for multiple flights
-            if (flights.Count() > 5)
+            if (flights.Count > 5)
             {
-                fees = fees * 0.97;
+                discount += fees * 0.03; //For each airline with more than 5 flights arriving/departing, the airline will receive an additional discount
             }
 
-            //Three Flight discount stackable
-            fees -= 350 * threeFlightDiscountNumber;
+            discount += 350 * Math.Floor(Convert.ToDouble(flights.Count / 3)); //For every 3 flights arriving/departing, airlines will receive a discoun
 
-            //initalise 9pm and 11am
-            DateTime startTime = DateTime.Today.AddHours(21); // 9:00 PM 
-            DateTime endTime = DateTime.Today.AddHours(11); // 11:00 AM  
+            DateTime startTime = DateTime.Today.AddHours(21); //Represents 9PM
+            DateTime endTime = DateTime.Today.AddHours(11); //Represents 11AM
 
             foreach (Flight f in flights.Values)
             {
-                //Time discounts
-                if (f.ExpectedTime > startTime || f.ExpectedTime < endTime)
+                if (f.ExpectedTime.Hour > startTime.Hour || f.ExpectedTime.Hour < endTime.Hour)
                 {
-                    fees -= 110;
+                    discount += 110; //For each flight arriving/ departing before 11am or after 9pm
                 }
-
-                //Flight Origin discounts
                 if (f.Origin == "Dubai (DXB)" || f.Origin == "Bangkok (BKK)" || f.Origin == "Tokyo (NRT)")
                 {
-                    fees -= 25;
+                    discount += 25; //For each flight with the Origin of Dubai (DXB), Bangkok (BKK) or Tokyo (NRT)
                 }
-                //No Special Request Code discounts
                 if (f is NORMFlight)
                 {
-                    fees -= 50;
+                    discount += 50; //For each flight not indicating any Special Request Codes
                 }
             }
-
-
-            return fees;
+            fees += flights.Values.Count * 300; //Boarding Gate fee
+            return fees - discount;
         }
+        public double CalculateDiscount()
+        {
+            double fees = 0;
+            double discount = 0;
 
+            foreach (Flight f in flights.Values)
+            {
+                fees += f.CalculateFees();
+            }
 
+            if (flights.Count > 5)
+            {
+                discount += fees * 0.03; //For each airline with more than 5 flights arriving/departing, the airline will receive an additional discount
+            }
+
+            discount += 350 * Math.Floor(Convert.ToDouble(flights.Count / 3)); //For every 3 flights arriving/departing, airlines will receive a discoun
+
+            DateTime startTime = DateTime.Today.AddHours(21); //Represents 9PM
+            DateTime endTime = DateTime.Today.AddHours(11); //Represents 11AM
+
+            foreach (Flight f in flights.Values)
+            {
+                if (f.ExpectedTime.Hour > startTime.Hour || f.ExpectedTime.Hour < endTime.Hour)
+                {
+                    discount += 110; //For each flight arriving/ departing before 11am or after 9pm
+                }
+                if (f.Origin == "Dubai (DXB)" || f.Origin == "Bangkok (BKK)" || f.Origin == "Tokyo (NRT)")
+                {
+                    discount += 25; //For each flight with the Origin of Dubai (DXB), Bangkok (BKK) or Tokyo (NRT)
+                }
+                if (f is NORMFlight)
+                {
+                    discount += 50; //For each flight not indicating any Special Request Codes
+                }
+            }
+            fees += flights.Values.Count * 300; //Boarding Gate fee
+            return discount;
+        }
 
         public override string ToString()
         {
             return $"Name:{Name} Code:{Code}";
         }
     }
+
 }
